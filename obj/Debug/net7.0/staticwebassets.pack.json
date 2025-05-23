@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\natal\\Projekty\\c#sem4\\PZ2-Project\\MediCode\\wwwroot\\images\\medicode.png",
+      "PackagePath": "staticwebassets\\images\\medicode.png"
+    },
+    {
       "Id": "C:\\Users\\natal\\Projekty\\c#sem4\\PZ2-Project\\MediCode\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

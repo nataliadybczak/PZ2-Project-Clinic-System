@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IX3N0z+E2MBBnBpLs93xv0KZ/alUKieu61TGwAUqBac=",
+  "Hash": "djMRcvy7qgsgTvUxLido60DL/+V5ncy2KSF9ro7HFD8=",
   "Source": "MediCode",
   "BasePath": "_content/MediCode",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\natal\\Projekty\\c#sem4\\PZ2-Project\\MediCode\\wwwroot\\images\\medicode.png",
+      "SourceId": "MediCode",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\natal\\Projekty\\c#sem4\\PZ2-Project\\MediCode\\wwwroot\\",
+      "BasePath": "_content/MediCode",
+      "RelativePath": "images/medicode.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\medicode.png"
     },
     {
       "Identity": "C:\\Users\\natal\\Projekty\\c#sem4\\PZ2-Project\\MediCode\\wwwroot\\js\\site.js",
