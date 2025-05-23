@@ -1,0 +1,69 @@
+@model MediCode.Models.Pacjent
+
+@{
+    ViewData["Title"] = "Edytuj";
+}
+
+<h1>Edytuj dane pacjenta</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Imie" class="control-label"></label>
+                <input asp-for="Imie" class="form-control" />
+                <span asp-validation-for="Imie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nazwisko" class="control-label"></label>
+                <input asp-for="Nazwisko" class="form-control" />
+                <span asp-validation-for="Nazwisko" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesel" class="control-label"></label>
+                <input asp-for="Pesel" class="form-control" />
+                <span asp-validation-for="Pesel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+            </div>
+            <hr />
+            <h4>Dodaj chorobę pacjenta</h4>
+            <div class="form-group">
+                <label for="wybranaChoroba">Wybierz chorobę:</label>
+                <option value="">-- wybierz chorobę --</option>
+                <select name="wybranaChoroba" class="form-control">
+                    @foreach (var nazwa in ViewBag.Choroby as List<string>)
+                    {
+                        <option value="@nazwa">@nazwa</option>
+                    }
+                </select>
+            </div>
+            <p class="text-muted">lub podaj nazwę choroby:</p>
+            <div class="form-group">
+                <input type="text" name="nowaChorobaNazwa" class="form-control" placeholder="Podaj nazwę choroby" />
+            </div>
+            <div class="form-group">
+                <label for="nowaChorobaOpis">Opis choroby:</label>
+                <textarea name="nowaChorobaOpis" class="form-control" placeholder="Podaj opis choroby"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="nowaChorobaData">Data rozpoznania:</label>
+                <input type="date" name="nowaChorobaData" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Dodaj" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
