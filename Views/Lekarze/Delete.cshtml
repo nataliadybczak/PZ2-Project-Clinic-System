@@ -1,0 +1,50 @@
+@model MediCode.Models.Lekarz
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Usuń lekarza</h1>
+
+<h3>Czy jesteś pewien, że chcesz usunąć lekarza z bazy danych?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+        @* <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsAdmin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsAdmin)
+        </dd> *@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Specjalizacja)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Specjalizacja)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" /> |
+        <a asp-action="Index">Anuluj</a>
+    </form>
+</div>

@@ -11,6 +11,10 @@
 </head>
 
 <body>
+    @{
+        var isLoggedIn = Context.Session.GetInt32("UserId") != null;
+        var isAdmin = Context.Session.GetString("IsAdmin") == "True";
+    }
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -24,14 +28,34 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home"
                                 asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item"></li>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Login"
-                            asp-action="Index">Logowanie</a>
-                        </li>
+                        </li> *@
+                        @if (isLoggedIn)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Pacjenci" asp-action="Index">Pacjenci</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Wizyty" asp-action="Index">Wizyty</a>
+                            </li>
+                            @if (isAdmin)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Lekarze" asp-action="Index">Lekarze</a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Login" asp-action="Logout">Wyloguj</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Login" asp-action="Index">Zaloguj się</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

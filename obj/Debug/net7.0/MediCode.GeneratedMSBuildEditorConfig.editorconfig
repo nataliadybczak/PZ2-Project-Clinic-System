@@ -16,12 +16,36 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\natal\Projekty\c#sem4\PZ2-Project\MediCode
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/natal/Projekty/c\#sem4/PZ2-Project/MediCode/Views/Home/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/natal/Projekty/c\#sem4/PZ2-Project/MediCode/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/natal/Projekty/c\#sem4/PZ2-Project/MediCode/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Projekty/c\#sem4/PZ2-Project/MediCode/Views/Lekarze/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVrYXJ6ZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Projekty/c\#sem4/PZ2-Project/MediCode/Views/Lekarze/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVrYXJ6ZVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Projekty/c\#sem4/PZ2-Project/MediCode/Views/Lekarze/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVrYXJ6ZVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Projekty/c\#sem4/PZ2-Project/MediCode/Views/Lekarze/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVrYXJ6ZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Projekty/c\#sem4/PZ2-Project/MediCode/Views/Lekarze/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVrYXJ6ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/natal/Projekty/c\#sem4/PZ2-Project/MediCode/Views/Login/Index.cshtml]
