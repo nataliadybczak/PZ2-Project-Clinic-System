@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<MediCode.Data.MediCodeContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("ContextDb")
+        ?? throw new InvalidOperationException("Connection string 'ContextDb' not found.")));
 
 var app = builder.Build();
 
