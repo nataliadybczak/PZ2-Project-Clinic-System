@@ -9,6 +9,8 @@ namespace MediCode.Models
         [Display(Name = "Imię")]
         [Required(ErrorMessage = "Imię jest wymagane.")]
         public string Imie { get; set; }
+        [Display(Name = "Administrator")]
+        public bool IsAdmin { get; set; }
         [Display(Name = "Nazwisko")]
         [Required(ErrorMessage = "Nazwisko jest wymagane.")]
         public string Nazwisko { get; set; }

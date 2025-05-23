@@ -10,6 +10,21 @@ builder.Services.AddDbContext<MediCode.Data.MediCodeContext>(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<MediCode.Data.MediCodeContext>();
+        MediCode.Data.DbInitializer.Initialize(context);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Wystąpił błąd podczas inicjalizacji bazy danych.");
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
