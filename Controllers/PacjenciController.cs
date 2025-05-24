@@ -33,6 +33,11 @@ namespace MediCode.Controllers
             {
                 return NotFound();
             }
+            var lekarzId = HttpContext.Session.GetInt32("UserId");
+            if (lekarzId == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             var pacjent = await _context.Pacjenci
                 .Include(p => p.DodanyPrzez)
@@ -42,6 +47,9 @@ namespace MediCode.Controllers
             {
                 return NotFound();
             }
+            ViewBag.WizytyPacjenta = await _context.Wizyty
+                .Where(w => w.PacjentId == id && w.LekarzId == lekarzId)
+                .ToListAsync();
 
             return View(pacjent);
         }

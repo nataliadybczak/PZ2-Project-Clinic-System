@@ -59,6 +59,31 @@
     {
         <p>Brak historii chorób.</p>
     }
+    <h4>Wizyty pacjenta</h4>
+    @if (ViewBag.WizytyPacjenta != null && ((List<Wizyta>)ViewBag.WizytyPacjenta).Any())
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Data wizyty</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var wizyta in (List<MediCode.Models.Wizyta>)ViewBag.WizytyPacjenta)
+                {
+                    <tr>
+                        <td>@wizyta.DataWizyty.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>@wizyta.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Brak wizyt.</p>
+    }
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
