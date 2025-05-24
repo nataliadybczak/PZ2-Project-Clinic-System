@@ -1,0 +1,55 @@
+@model IEnumerable<MediCode.Models.Wizyta>
+
+@{
+    ViewData["Title"] = "Wizyty";
+}
+
+<h1>Wizyty</h1>
+
+<p>
+    <a asp-action="Create">Dodaj wizytę</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataWizyty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pacjent)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataWizyty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @if (item.Status == StatusWizyty.Dostepna || item.Pacjent == null)
+                    {
+                        <span class="text-muted"></span>
+                    }
+                    else
+                    {
+                        <span>@item.Pacjent.Imie @item.Pacjent.Nazwisko (@item.Pacjent.Pesel)</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

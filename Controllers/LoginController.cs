@@ -40,6 +40,7 @@ public class LoginController : Controller
         {
             // Ustawienie sesji dla lekarza
             HttpContext.Session.SetInt32("UserId", lekarz.Id);
+            HttpContext.Session.SetInt32("LekarzId", lekarz.Id);
             HttpContext.Session.SetString("IsAdmin", lekarz.IsAdmin.ToString());
             _logger.LogInformation($"Użytkownik {lekarz.Imie} {lekarz.Nazwisko} zalogowany pomyślnie.");
             return RedirectToAction("Index", "Home");
