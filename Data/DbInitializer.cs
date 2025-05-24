@@ -11,12 +11,6 @@ namespace MediCode.Data
         {
             context.Database.Migrate();
 
-            // Sprawdź, czy są już dane w bazie
-            if (context.Lekarze.Any())
-            {
-                return; // Baza danych już zawiera dane
-            }
-
             // Hashowanie hasła
             string HashPassword(string password)
             {
@@ -25,19 +19,35 @@ namespace MediCode.Data
                 return BitConverter.ToString(bytes).Replace("-", "").ToLower();
             }
 
-            // Dodaj admina
-            var admin = new Lekarz
+            // Sprawdź, czy są już dane w bazie
+            if (!context.Lekarze.Any())
             {
-                Imie = "Adam",
-                Nazwisko = "Adminowski",
-                Specjalizacja = "Administrator",
-                Login = "admin",
-                Haslo = HashPassword("bardzotrudnehaslo"),
-                IsAdmin = true
-            };
+                // Dodaj admina
+                var admin = new Lekarz
+                {
+                    Imie = "Adam",
+                    Nazwisko = "Adminowski",
+                    Specjalizacja = "Administrator",
+                    Login = "admin",
+                    Haslo = HashPassword("bardzotrudnehaslo"),
+                    IsAdmin = true,
+                    Token = Guid.NewGuid().ToString()
+                };
 
-            context.Lekarze.Add(admin);
-            context.SaveChanges();
+                context.Lekarze.Add(admin);
+                context.SaveChanges();
+            }
+            else
+            {
+                // Jeśli admin już istnieje, zaktualizuj jego token
+                var admin = context.Lekarze.FirstOrDefault(l => l.Login == "admin");
+                if (admin != null && string.IsNullOrEmpty(admin.Token))
+                {
+                    admin.Token = Guid.NewGuid().ToString();
+                    context.SaveChanges();
+                }
+            }
+
         }
     }
 }
