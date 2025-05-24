@@ -35,8 +35,8 @@
             <h4>Dodaj chorobę pacjenta</h4>
             <div class="form-group">
                 <label for="wybranaChoroba">Wybierz chorobę:</label>
-                <option value="">-- wybierz chorobę --</option>
                 <select name="wybranaChoroba" class="form-control">
+                    <option value="" selected>-- wybierz chorobę --</option>
                     @foreach (var nazwa in ViewBag.Choroby as List<string>)
                     {
                         <option value="@nazwa">@nazwa</option>

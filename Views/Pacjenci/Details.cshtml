@@ -37,6 +37,7 @@
                     <th>Nazwa choroby</th>
                     <th>Data rozpoznania</th>
                     <th>Opis</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -46,6 +47,9 @@
                         <td>@choroba.Nazwa</td>
                         <td>@choroba.Data?.ToString("yyyy-MM-dd" ?? "")</td>
                         <td>@choroba.Opis</td>
+                        <td>
+                            <a asp-controller="Choroby" asp-action="EditOpis" asp-route-id="@choroba.Id">Edytuj</a>
+                        </td>
                     </tr>
                 }
             </tbody>
