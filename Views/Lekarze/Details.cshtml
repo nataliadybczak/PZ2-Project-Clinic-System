@@ -35,7 +35,7 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
-    <a asp-action="Index">Powrót</a>
+<div class="d-flex gap-2 mt-3">
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn" style="background-color: #ffe6f0;">Edytuj</a>
+    <a asp-action="Index" class="btn" style="background-color: rgb(199, 147, 199);">Powrót</a>
 </div>

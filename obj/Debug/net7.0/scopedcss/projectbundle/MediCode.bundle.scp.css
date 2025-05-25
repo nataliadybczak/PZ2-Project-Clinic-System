@@ -14,8 +14,10 @@ a[b-fywijs7nkd] {
 
 .btn-primary[b-fywijs7nkd] {
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  /* background-color: #1b6ec2;
+  border-color: #1861ac; */
+  background-color: #C70B76;
+  border-color: #BC0B6F;
 }
 
 .nav-pills .nav-link.active[b-fywijs7nkd], .nav-pills .show > .nav-link[b-fywijs7nkd] {

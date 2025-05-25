@@ -47,8 +47,9 @@
                         <td>@choroba.Nazwa</td>
                         <td>@choroba.Data?.ToString("yyyy-MM-dd" ?? "")</td>
                         <td>@choroba.Opis</td>
-                        <td>
-                            <a asp-controller="Choroby" asp-action="EditOpis" asp-route-id="@choroba.Id">Edytuj</a>
+                        <td style="text-align: center;">
+                            <a asp-controller="Choroby" asp-action="EditOpis" class="btn"
+                                style="background-color: #ffe6f0; border-color: #3e081e;" asp-route-id="@choroba.Id">Edytuj</a>
                         </td>
                     </tr>
                 }
@@ -85,7 +86,7 @@
         <p>Brak wizyt.</p>
     }
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
-    <a asp-action="Index">Anuluj</a>
+<div class="d-flex gap-2 mt-3">
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn" style="background-color: #ffe6f0;">Edytuj</a>
+    <a asp-action="Index" class="btn" style="background-color: rgb(199, 147, 199);">Powrót</a>
 </div>
