@@ -45,7 +45,7 @@ namespace MediCode.ControllersApi
             return Ok(await pacjenci);
         }
 
-        // GET: api/PacjenciApi/5
+        // GET: api/PacjenciApi/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<Pacjent>> GetPacjent(int id, [FromHeader] string login, [FromHeader] string token)
         {
