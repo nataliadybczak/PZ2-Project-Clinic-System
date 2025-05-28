@@ -208,6 +208,62 @@ namespace MediCode.ControllersApi
             return NoContent();
         }
 
+        // GET: api/PacjenciApi/{id}/choroby
+        [HttpGet("{id}/choroby")]
+        public async Task<ActionResult<IEnumerable<object>>> GetChoroby(int id, [FromHeader] string login, [FromHeader] string token)
+        {
+            var lekarz = _context.Lekarze.FirstOrDefault(l => l.Login == login && l.Token == token);
+            if (lekarz == null)
+            {
+                return Unauthorized("Niepoprawny login lub token.");
+            }
+            var pacjent = await _context.Pacjenci.FindAsync(id);
+            if (pacjent == null)
+            {
+                return NotFound("Pacjent nie został znaleziony.");
+            }
+            var choroby = await _context.Choroby
+                .Where(c => c.PacjentId == id)
+                .Include(c => c.Pacjent)
+                .Select(c => new
+                {
+                    c.Id,
+                    Pacjent = c.Pacjent != null ? $"{c.Pacjent.Imie} {c.Pacjent.Nazwisko}" : "Nieznany",
+                    c.Nazwa,
+                    DataRozpoznania = c.Data.HasValue ? c.Data.Value.ToString("yyyy-MM-dd") : "Nieznana",
+                    c.Opis
+                })
+                .ToListAsync();
+            return Ok(choroby);
+        }
+
+        // POST: api/PacjenciApi/{id}/choroby
+        [HttpPost("{id}/choroby")]
+        public async Task<ActionResult<Choroba>> PostChoroba(int id, [FromBody] Choroba choroba, [FromHeader] string login, [FromHeader] string token)
+        {
+            var lekarz = _context.Lekarze.FirstOrDefault(l => l.Login == login && l.Token == token);
+            if (lekarz == null)
+            {
+                return Unauthorized("Niepoprawny login lub token.");
+            }
+            var pacjent = await _context.Pacjenci.FindAsync(id);
+            if (pacjent == null)
+            {
+                return NotFound("Pacjent nie został znaleziony.");
+            }
+            choroba.PacjentId = id;
+            _context.Choroby.Add(choroba);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetChoroby), new { id = pacjent.Id }, new
+            {
+                choroba.Id,
+                choroba.Nazwa,
+                DataRozpoznania = choroba.Data.HasValue ? choroba.Data.Value.ToString("yyyy-MM-dd") : "Nieznana",
+                choroba.Opis
+            });
+        }
+
+
         private bool PacjentExists(int id)
         {
             return (_context.Pacjenci?.Any(e => e.Id == id)).GetValueOrDefault();
