@@ -194,6 +194,23 @@ namespace MediCode.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Statystyki()
+        {
+            var lekarzId = HttpContext.Session.GetInt32("UserId");
+            var liczbaWizyt = await _context.Wizyty.CountAsync(w => w.LekarzId == lekarzId);
+            var liczbaWizytZrealizowanych = await _context.Wizyty.Where(w => w.LekarzId == lekarzId && w.Status == StatusWizyty.Zrealizowana).CountAsync();
+            var liczbaUnikalnychPacjentow = await _context.Wizyty
+                .Where(w => w.LekarzId == lekarzId && w.Status == StatusWizyty.Zrealizowana && w.PacjentId != null)
+                .Select(w => w.PacjentId)
+                .Distinct()
+                .CountAsync();
+
+            ViewBag.LiczbaWizyt = liczbaWizyt;
+            ViewBag.LiczbaWizytZrealizowanych = liczbaWizytZrealizowanych;
+            ViewBag.LiczbaUnikalnychPacjentow = liczbaUnikalnychPacjentow;
+            return View();
+        }
+
         private bool LekarzExists(int id)
         {
             return (_context.Lekarze?.Any(e => e.Id == id)).GetValueOrDefault();

@@ -1,0 +1,15 @@
+@model IEnumerable<MediCode.Models.Lekarz>
+
+@{
+    ViewData["Title"] = "Statystyki lekarza";
+}
+
+<h1>Statystyki lekarza</h1>
+<div class="card p-3 shadow-sm">
+    <p><strong>Łączna liczba wizyt: </strong>@ViewBag.LiczbaWizyt</p>
+    <p><strong>Liczba zrealizowanych wizyt: </strong>@ViewBag.LiczbaWizytZrealizowanych</p>
+    <p><strong>Liczba unikalnych pacjentów, którzy zrealizowali wizytę: </strong>@ViewBag.LiczbaUnikalnychPacjentow</p>
+</div>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary mt-3"
+    style="background-color: #C70B76; border-color: #BC0B6F;">Powrót</a>
