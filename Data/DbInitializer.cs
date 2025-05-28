@@ -48,6 +48,14 @@ namespace MediCode.Data
                 }
             }
 
+            // Uzupełnij tokeny dla lekarzy, którzy jeszcze ich nie mają
+            // var lekarzeBezTokena = context.Lekarze.Where(l => string.IsNullOrEmpty(l.Token)).ToList();
+            // foreach (var lekarz in lekarzeBezTokena)
+            // {
+            //     lekarz.Token = Guid.NewGuid().ToString();
+            // }
+            // context.SaveChanges();
+
         }
     }
 }

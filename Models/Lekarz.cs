@@ -23,6 +23,7 @@ namespace MediCode.Models
         public string Haslo { get; set; }
         public ICollection<Pacjent>? DodaniPacjenci { get; set; }
         public ICollection<Wizyta>? Wizyty { get; set; }
+        [Display(Name = "Token")]
         public string? Token { get; set; }
     }
 }

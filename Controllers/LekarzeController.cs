@@ -85,6 +85,7 @@ namespace MediCode.Controllers
             {
                 lekarz.Haslo = HashPassword(lekarz.Haslo);
                 lekarz.IsAdmin = false; // Domyślnie ustawiamy IsAdmin na false
+                lekarz.Token = Guid.NewGuid().ToString(); // Generowanie unikalnego tokena
                 _context.Add(lekarz);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
